@@ -31,9 +31,13 @@ function createElements()
         const category = document.createElement("p")
         category.innerText = "Category: " +prod.category;
 
+        const discount = document.createElement("p")
+        discount.innerText = "Discounted Price: "  + prod.getDiscountedPrice()
+
         card.appendChild(name);
         card.appendChild(price);
         card.appendChild(category);
+        card.appendChild(discount)
 
         card.addEventListener('mouseenter', ()=>{card.style.border = "2px solid gray"})
         card.addEventListener('mouseleave', ()=>{card.style.border = " 2px solid white"})
@@ -42,6 +46,8 @@ function createElements()
     })
 
 }
+
+
 
 
 
@@ -62,10 +68,11 @@ function findCostliest()
     document.getElementById("costliestProduct").textContent = (`The Costliest Product is:  ${costliestProd.name} and it's price is $${costliest}`)
 }
 
-Product.prototype.getDiscountedPrice=()=>
-{
-    return this.price - (this.price * 0.2);
-}
+
+
+Product.prototype.getDiscountedPrice = function() {
+  return this.price - (this.price * 0.2);
+};
 
 (function init()
 {
