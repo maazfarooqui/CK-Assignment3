@@ -1,6 +1,6 @@
 const body = document.getElementById("body");
 
-
+//array for products
 const products = [
   new Product("shoe", 2000, "footwear"),
   new Product("watch", 4000, "accessories"),
@@ -10,7 +10,7 @@ const products = [
   new Product("shirt", 1500, "Garments")
 ];
 
-
+//creating elements to display  on page
 function createElements()
 {
 
@@ -50,7 +50,7 @@ function createElements()
 
 
 
-
+//consturctor function to assign values
 function Product(name, price, category)
 {
     this.name = name;
@@ -60,6 +60,7 @@ function Product(name, price, category)
 
 }
 
+//finds the costliest product
 function findCostliest()
 {
     const costliest = Math.max.apply(null, products.map(p=>p.price))
@@ -69,11 +70,13 @@ function findCostliest()
 }
 
 
-
+//function to get discounted price of products
 Product.prototype.getDiscountedPrice = function() {
   return this.price - (this.price * 0.2);
 };
 
+
+//initializer function set as IIFE
 (function init()
 {
     createElements()
